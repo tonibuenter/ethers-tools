@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "module": "commonjs",
+    "target": "es2020",
+    "declaration": true,
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "esModuleInterop": true,
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
+    ],
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "strict": false
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/__tests__"
+  ]
+}
