@@ -5,9 +5,9 @@ import * as process from 'process';
 const path = require('path');
 const fs = require('fs');
 
-const outDir = process.env.outDir;
+const outDir = process.env.OUT_DIR;
 
-const addressFilter = (process.env.addressFilter || 'ffffff').split(/\W+/);
+const addressFilter = (process.env.ADDRESS_FILTER || 'ffffff').split(/\W+/);
 
 console.log('Address filter:', addressFilter.join(','));
 

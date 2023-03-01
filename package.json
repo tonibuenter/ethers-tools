@@ -5,6 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/mining-address.ts",
+    "mnemonic-to-pk": "ts-node src/mnemonic-to-pk.ts",
     "dev": "ts-node-dev src/index.ts",
     "test": "mocha -r ts-node/register ./test/**/*test.ts"
   },
