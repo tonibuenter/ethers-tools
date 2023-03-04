@@ -1,17 +1,14 @@
 import { ethers } from 'ethers';
 import 'dotenv/config';
 import * as process from 'process';
-
-const path = require('path');
-const fs = require('fs');
+import path from 'path';
+import fs from 'fs';
 
 const outDir = process.env.OUT_DIR;
 
 const addressFilter = (process.env.ADDRESS_FILTER || 'ffffff').split(/\W+/);
 
 console.log('Address filter:', addressFilter.join(','));
-
-// anninadc
 
 let counter = 0;
 
@@ -20,7 +17,6 @@ while (counter < 1000000000000) {
 
   const wallet = ethers.Wallet.createRandom();
   const add = wallet.address.toLowerCase();
-  //console.debug('add:', add);
 
   for (let ew of addressFilter) {
     let filename = '';

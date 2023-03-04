@@ -6,7 +6,12 @@
   "scripts": {
     "start": "ts-node src/mining-address.ts",
     "mnemonic-to-pk": "ts-node src/mnemonic-to-pk.ts",
-    "dev": "ts-node-dev src/index.ts",
+    "mining-address": "ts-node src/mining-address.ts",
+    "balance": "ts-node src/balance.ts",
+    "send-eth": "ts-node src/send-eth.ts",
+    "demo-compile": "ts-node src/demo-compile.ts",
+    "demo-deploy": "ts-node src/demo-deploy.ts",
+    "demo-call": "ts-node src/demo-call.ts",
     "test": "mocha -r ts-node/register ./test/**/*test.ts"
   },
   "keywords": [
@@ -18,7 +23,8 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
-    "ethers": "^6.0.8"
+    "ethers": "^6.0.8",
+    "solc": "^0.8.19"
   },
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
