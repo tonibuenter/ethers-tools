@@ -1,10 +1,9 @@
-import { formatEther, InfuraProvider, parseUnits, Wallet } from 'ethers';
+import { formatEther, parseUnits, Wallet } from 'ethers';
 import { isError } from './utils-shared';
 import 'dotenv/config';
-import { getBalances } from './utils';
+import { getBalances, newInfuraProvider } from './utils';
 
 const network = process.env.ETHEREUM_NETWORK;
-const projectId = process.env.INFURA_PROJECT_ID;
 
 const address = process.env.MAIN_ADDRESS;
 const privateKey = process.env.MAIN_PRIVATE_KEY;
@@ -17,7 +16,7 @@ console.log(`Sending ${ethValue} ETH \nfrom : ${address} \nto   : ${x0000Address
 async function sendEth() {
   try {
     // Configuring the connection to an Ethereum node
-    const provider = new InfuraProvider(network, projectId);
+    const provider = newInfuraProvider();
 
     const balancesBefore = await getBalances(provider, [address, x0000Address]);
     balancesBefore.forEach(({ address, wei }) => console.log(`balance ${address}: ${formatEther(wei)}`));

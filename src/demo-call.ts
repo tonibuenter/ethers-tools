@@ -1,12 +1,11 @@
-import { Contract, formatEther, InfuraProvider, Wallet } from 'ethers';
+import { Contract, formatEther, Wallet } from 'ethers';
 import { isError } from './utils-shared';
 import 'dotenv/config';
 import fs from 'fs';
-import { getBalances } from './utils';
+import { getBalances, newInfuraProvider } from './utils';
 import * as process from 'process';
 
 const network = process.env.ETHEREUM_NETWORK;
-const projectId = process.env.INFURA_PROJECT_ID;
 
 const address = process.env.MAIN_ADDRESS;
 const privateKey = process.env.MAIN_PRIVATE_KEY;
@@ -19,7 +18,7 @@ async function callDemoContract() {
     const { abi } = JSON.parse(fs.readFileSync('./contracts/Demo.json').toString('utf-8'));
 
     // Configuring the connection to an Ethereum node
-    const provider = new InfuraProvider(network, projectId);
+    const provider = newInfuraProvider();
 
     const balancesBefore = await getBalances(provider, [address]);
     balancesBefore.forEach(({ address, wei }) => console.log(`balance ${address}: ${formatEther(wei)}`));

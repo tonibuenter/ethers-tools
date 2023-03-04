@@ -1,4 +1,9 @@
-import { Provider } from 'ethers';
+import { InfuraProvider, Provider } from 'ethers';
+import * as process from 'process';
+import 'dotenv/config';
+
+const network = process.env.ETHEREUM_NETWORK;
+const projectId = process.env.INFURA_PROJECT_ID;
 
 export interface Balance {
   address: string;
@@ -12,4 +17,9 @@ export async function getBalances(provider: Provider, addresses: string[]): Prom
     balances.push({ address, wei });
   }
   return balances;
+}
+
+export function newInfuraProvider() {
+  console.debug('newInfuraProvider', { network, projectId });
+  return new InfuraProvider(network, projectId);
 }

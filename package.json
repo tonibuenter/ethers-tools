@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/mining-address.ts",
-    "mnemonic-to-pk": "ts-node src/mnemonic-to-pk.ts",
+    "mnemonic-check": "ts-node src/mnemonic-check.ts",
     "mining-address": "ts-node src/mining-address.ts",
     "balance": "ts-node src/balance.ts",
     "send-eth": "ts-node src/send-eth.ts",

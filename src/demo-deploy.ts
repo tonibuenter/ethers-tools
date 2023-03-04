@@ -1,11 +1,8 @@
-import { ContractFactory, formatEther, InfuraProvider, Wallet } from 'ethers';
+import { ContractFactory, formatEther, Wallet } from 'ethers';
 import { isError } from './utils-shared';
 import 'dotenv/config';
 import fs from 'fs';
-import { getBalances } from './utils';
-
-const network = process.env.ETHEREUM_NETWORK;
-const projectId = process.env.INFURA_PROJECT_ID;
+import { getBalances, newInfuraProvider } from './utils';
 
 const address = process.env.MAIN_ADDRESS;
 const privateKey = process.env.MAIN_PRIVATE_KEY;
@@ -17,7 +14,7 @@ async function deployDemoContract() {
     const { abi, bytecode } = JSON.parse(fs.readFileSync('./contracts/Demo.json').toString('utf-8'));
 
     // Configuring the connection to an Ethereum node
-    const provider = new InfuraProvider(network, projectId);
+    const provider = newInfuraProvider();
 
     const balancesBefore = await getBalances(provider, [address]);
     balancesBefore.forEach(({ address, wei }) => console.log(`balance ${address}: ${formatEther(wei)}`));
@@ -28,7 +25,8 @@ async function deployDemoContract() {
     const factory = new ContractFactory(abi, bytecode, signer);
     const contract = await factory.deploy();
     console.log('Mining transaction...');
-    console.log(`https://${network}.etherscan.io/tx/${contract.deploymentTransaction().hash}`);
+    const network = await provider.getNetwork();
+    console.log(`https://${network.name}.etherscan.io/tx/${contract.deploymentTransaction().hash}`);
     // Waiting for the transaction to be mined
     const receipt = await contract.waitForDeployment();
     // The contract is now deployed on chain!
