@@ -29,6 +29,7 @@ while (counter < 1000000000000) {
     }
     if (filename) {
       const privateKey = wallet.privateKey.toString().toLowerCase();
+      const publicKey = wallet.publicKey.toString().toLowerCase();
       const mnemonic = wallet.mnemonic;
 
       const wallet2 = ethers.HDNodeWallet.fromMnemonic(mnemonic);
@@ -36,7 +37,7 @@ while (counter < 1000000000000) {
       if (privateKey === wallet2.privateKey.toString().toLowerCase()) {
         fs.writeFileSync(
           path.join(outDir, filename),
-          `[address]\n${add}\n[privateKey]\n${privateKey}\n[mnemonic]\n${mnemonic.phrase}`
+          `[address]\n${add}\n[publicKey]\n${publicKey}\n[privateKey]\n${privateKey}\n[mnemonic]\n${mnemonic.phrase}`
         );
         console.log(`Save file: ${filename}`);
       } else {

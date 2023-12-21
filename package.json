@@ -23,12 +23,12 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
+    "eth-crypto": "^2.6.0",
     "ethers": "^6.0.8",
-    "solc": "^0.8.19"
-  },
-  "devDependencies": {
-    "@testing-library/react": "^14.0.0",
-    "@types/chai": "^4.3.4",
+    "ganache": "^7.8.0",
+    "solc": "^0.8.19",
+    "web3": "^1.10.0",
+     "@types/chai": "^4.3.4",
     "@types/mocha": "^10.0.1",
     "chai": "^4.3.7",
     "global-jsdom": "^8.7.0",
